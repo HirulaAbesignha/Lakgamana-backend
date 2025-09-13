@@ -1,8 +1,3 @@
-Nice 🔥 since you’ve **already created the feature branches** (`feature/ticket`, `feature/reservation`, etc.), you don’t need your team members to create them again.
-
-Instead, they just need to **checkout those existing branches** from your repo after forking.
-
-Here’s how your **README.md** should look now 👇
 
 ---
 
@@ -116,9 +111,4 @@ git push origin --delete feature/<feature-name>
 * Push changes to your fork.
 * Open PR → base: `dev`.
 
-```
-
----
-
-Would you like me to also prepare a **one-line command per member** (like a ready-to-copy snippet for each branch), so you can directly assign and send them their exact command?
 ```
