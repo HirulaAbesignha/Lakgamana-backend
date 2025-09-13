@@ -110,5 +110,3 @@ git push origin --delete feature/<feature-name>
 * Work **only** on your assigned `feature/*` branch.
 * Push changes to your fork.
 * Open PR → base: `dev`.
-
-```
