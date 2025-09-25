@@ -14,7 +14,6 @@ public class PaymentService {
     public Payment initiatePayment(Long reservationId, Double amount) {
         // Create and save payment
         Payment payment = new Payment();
-        payment.setId(System.currentTimeMillis()); // Simple ID generation
         return paymentRepository.save(payment);
     }
 

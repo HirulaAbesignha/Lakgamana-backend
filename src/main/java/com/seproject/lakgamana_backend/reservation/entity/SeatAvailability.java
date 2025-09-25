@@ -1,14 +1,23 @@
 package com.seproject.lakgamana_backend.reservation.entity;
 
-import com.seproject.lakgamana_backend.entity.Train;
-import jakarta.persistence.*;
 import java.time.LocalDate;
+
+import com.seproject.lakgamana_backend.entity.Train;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 @Entity
 @Table(name = "seat_availability")
 public class SeatAvailability {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
