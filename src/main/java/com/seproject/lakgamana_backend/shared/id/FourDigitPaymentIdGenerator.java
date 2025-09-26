@@ -32,12 +32,11 @@ public class FourDigitPaymentIdGenerator implements IdentifierGenerator {
 
     private boolean exists(SharedSessionContractImplementor session, long id) {
         // Default table name for entity Payment is `payment` (no custom @Table)
-        String sql = "select 1 from payment where id = :id limit 1";
-        Object result = session.createNativeQuery(sql)
+        String sql = "select count(1) from payment where id = :id";
+        Long count = session.createNativeQuery(sql, Long.class)
                 .setParameter("id", id)
-                .uniqueResultOptional()
-                .orElse(null);
-        return result != null;
+                .getSingleResult();
+        return count != null && count > 0L;
     }
 }
 

@@ -3,8 +3,6 @@ package com.seproject.lakgamana_backend.reservation.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import com.seproject.lakgamana_backend.entity.Payment;
 import com.seproject.lakgamana_backend.entity.Route;
 import com.seproject.lakgamana_backend.entity.Train;
@@ -15,17 +13,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "reservations")
 public class Reservation {
     @Id
-    @GenericGenerator(name = "reservation4", strategy = "com.seproject.lakgamana_backend.shared.id.FourDigitReservationIdGenerator")
-    @GeneratedValue(generator = "reservation4")
+    @SequenceGenerator(name = "reservation_seq", sequenceName = "reservation_seq", allocationSize = 1, initialValue = 6000)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reservation_seq")
     private Long id;
 
     @ManyToOne

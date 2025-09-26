@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
@@ -15,7 +15,7 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.seproject.lakgamana_backend.entity.Payment;
 import com.seproject.lakgamana_backend.reservation.dto.ReservationRequest;
@@ -26,6 +26,7 @@ import com.seproject.lakgamana_backend.reservation.repository.SeatAvailabilityRe
 import com.seproject.lakgamana_backend.service.PaymentService;
 import com.seproject.lakgamana_backend.service.RouteService;
 
+@ExtendWith(MockitoExtension.class)
 public class ReservationServiceTest {
     @Mock
     private ReservationRepository reservationRepository;
@@ -38,11 +39,6 @@ public class ReservationServiceTest {
 
     @InjectMocks
     private ReservationService reservationService;
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     void testCreateReservationSuccess() {
