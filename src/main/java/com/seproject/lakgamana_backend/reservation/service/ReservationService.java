@@ -104,10 +104,7 @@ public class ReservationService {
         paymentService.processRefund(reservation.getPayment().getId());
     }
 
-    public List<SeatAvailability> getAvailableSeats(Long trainId, LocalDate travelDate) {
-        // First, ensure the train exists
-        Train train = new Train(trainId);
-        // Try to find seats directly by train_id column
+    public List<SeatAvailability> getAvailableSeats(Long trainId, LocalDate travelDate) {  // Try to find seats directly by train_id column
         return seatAvailabilityRepository.findByTrainIdAndTravelDateAndIsAvailableTrue(trainId, travelDate);
     }
 }
