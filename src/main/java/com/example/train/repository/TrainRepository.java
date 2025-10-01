@@ -1,0 +1,1 @@
+package com.example.train.repository; import com.example.train.entity.Train; import org.springframework.data.jpa.repository.JpaRepository; public interface TrainRepository extends JpaRepository<Train, Long>{}
