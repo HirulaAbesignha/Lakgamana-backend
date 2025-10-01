@@ -1,16 +1,16 @@
 package com.seproject.lakgamana_backend.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Payment {
     @Id
-    @GenericGenerator(name = "payment4", strategy = "com.seproject.lakgamana_backend.shared.id.FourDigitPaymentIdGenerator")
-    @GeneratedValue(generator = "payment4")
+    @SequenceGenerator(name = "payment_seq", sequenceName = "payment_seq", allocationSize = 1, initialValue = 1000)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payment_seq")
     private Long id;
 
     public Payment() {}

@@ -8,8 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.eq;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.times;
@@ -55,8 +53,12 @@ public class ReservationServiceTest {
         when(seatAvailabilityRepository.findByTrainIdAndTravelDateAndSeatNumber(1L, LocalDate.of(2025, 10, 1), "A12"))
                 .thenReturn(Optional.of(seat));
         when(routeService.isValidTrainAndRoute(1L, 1L)).thenReturn(true);
-        when(reservationRepository.save(any(Reservation.class))).thenAnswer(i -> i.getArguments()[0]);
-        when(paymentService.initiatePayment(anyLong(), eq(50.0))).thenReturn(new Payment(1L));
+        when(reservationRepository.save(any(Reservation.class))).thenAnswer(i -> {
+            Reservation res = (Reservation) i.getArguments()[0];
+            res.setId(1234L); // Set a mock ID
+            return res;
+        });
+        when(paymentService.initiatePayment(1234L, 50.0)).thenReturn(new Payment(1L));
 
         Reservation reservation = reservationService.createReservation(request, 1L);
 
